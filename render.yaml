@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: lamh
+    runtime: python
+    plan: starter            # القرص الدائم يحتاج خطة مدفوعة
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 --threads 4 -b 0.0.0.0:$PORT app:app
+    healthCheckPath: /api/health
+    disk:
+      name: lamh-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: LAMH_DB
+        value: /data/lamh.db
+      - key: LAMH_BEHIND_PROXY
+        value: "1"
+      - key: LAMH_CORS_ORIGIN
+        sync: false          # أدخل: https://USERNAME.github.io
+      - key: LAMH_ADMIN_PASSWORD
+        generateValue: true  # تجدها في لوحة Render > Environment
