@@ -1,4 +1,1 @@
-// عنوان سيرفر لَمْحَ (بدون / في النهاية).
-// على GitHub Pages ضع هنا عنوان السيرفر، مثال: "https://USERNAME.pythonanywhere.com"
-// اتركه فارغاً "" إذا كان السيرفر يقدّم الصفحة بنفسه (التشغيل المحلي).
-window.LAMH_API = "";
+window.LAMH_API = "https://lamhproject.pythonanywhere.com";
